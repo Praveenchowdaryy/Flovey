@@ -311,6 +311,55 @@
       align-items: center;
     }
 
+    .gallery-section {
+      padding-top: 2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 2rem;
+    }
+
+    .gallery-card {
+      background: var(--surface);
+      border: 1px solid rgba(249, 168, 201, 0.22);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 36px rgba(249, 168, 201, 0.24);
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 1.3rem 1.2rem 1.5rem;
+    }
+
+    .gallery-caption h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .gallery-caption p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
     .btn,
     .chip a,
     .product-card button,
@@ -750,6 +799,7 @@
 
     @media (max-width: 1024px) {
       .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .banner-inner { grid-template-columns: 1fr; }
       .contact-section { grid-template-columns: 1fr; }
     }
@@ -768,7 +818,7 @@
         padding-top: 1rem;
       }
       .hero-content { padding-top: 2rem; }
-      .grid-3, .feature-grid, .testimonial-grid { grid-template-columns: 1fr; }
+      .grid-3, .feature-grid, .testimonial-grid, .gallery-grid { grid-template-columns: 1fr; }
       .section-head { text-align: center; }
       .trust-row { grid-template-columns: 1fr; }
       .banner-inner, .contact-section { gap: 1.5rem; }
@@ -776,40 +826,40 @@
     }
 
     .gradient-1 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1512002889297-a4d15d0d9bd4?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-2 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.32)), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.32)), url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-3 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(0,0,0,0.33)), url('https://images.unsplash.com/photo-1518183214770-9cffbec72538?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(0,0,0,0.33)), url('https://images.unsplash.com/photo-1512075486764-8d5f365c29d1?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-4 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1520776691023-0327ae93fe8b?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-5 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.30)), url('https://images.unsplash.com/photo-1514227244668-0f9f3197d8bb?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.30)), url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-6 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.30)), url('https://images.unsplash.com/photo-1512218168355-7b85f7a86363?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.30)), url('https://images.unsplash.com/photo-1518733057094-95b531fceb49?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-7 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1512075486764-8d5f365c29d1?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1477943040921-fc36f1a9d41d?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-8 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-9 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.33)), url('https://images.unsplash.com/photo-1499579117410-7f85b5d8ef25?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.33)), url('https://images.unsplash.com/photo-1516542076529-1ea3854896b4?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-10 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1524594154905-3cc4c1f241dc?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-11 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.32)), url('https://images.unsplash.com/photo-1467293623801-4845a08fffb4?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.32)), url('https://images.unsplash.com/photo-1516651029871-3c6163972ed5?auto=format&fit=crop&w=900&q=80');
     }
     .gradient-12 {
-      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1524938397035-c8f35cc01ad7?auto=format&amp;fit=crop&amp;w=900&amp;q=80');
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1490122417551-2f1c6f58ba24?auto=format&fit=crop&w=900&q=80');
     }
   </style>
 </head>
@@ -861,6 +911,43 @@
           <div class="trust-item">💐 100+ Arrangements</div>
           <div class="trust-item">⭐ 500+ Happy Customers</div>
         </div>
+      </div>
+    </section>
+
+    <section class="container fade-item gallery-section" aria-labelledby="gallery-heading">
+      <div class="section-head">
+        <h2 id="gallery-heading">Featured Floral Moments</h2>
+        <p>Browse our sample bouquets and arrangements, styled by Flovey to inspire your next gift.</p>
+      </div>
+      <div class="gallery-grid">
+        <article class="gallery-card">
+          <img class="gallery-image" src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=900&q=80" alt="Bouquet of deep red roses" />
+          <div class="gallery-caption">
+            <h3>Romantic Red Rose Bouquet</h3>
+            <p>Premium red roses, artisan wrapped and ready for delivery.</p>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img class="gallery-image" src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=900&q=80" alt="Elegant pink rose bouquet" />
+          <div class="gallery-caption">
+            <h3>Pastel Shower Bouquet</h3>
+            <p>Soft blush roses and seasonal blooms for a gentle celebration.</p>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img class="gallery-image" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" alt="Vibrant sunflower bouquet" />
+          <div class="gallery-caption">
+            <h3>Sunshine Sunflower Bunch</h3>
+            <p>Bright, cheerful sunflowers perfect for birthdays and happy occasions.</p>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img class="gallery-image" src="https://images.unsplash.com/photo-1516542076529-1ea3854896b4?auto=format&fit=crop&w=900&q=80" alt="Luxury red rose gift box" />
+          <div class="gallery-caption">
+            <h3>Luxury Mixed Rose Box</h3>
+            <p>24 elegant roses arranged in a premium gift box for unforgettable moments.</p>
+          </div>
+        </article>
       </div>
     </section>
 
