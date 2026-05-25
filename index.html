@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Flovey - Bangalore's romantic flower and bouquet delivery service. Fresh blooms delivered with love across Bangalore." />
+  <title>Flovey | Flower Delivery in Bangalore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@500;600&family=Nunito:wght@400;500&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #FFF5F7;
+      --surface: #FFFAF9;
+      --surface-strong: rgba(255, 250, 249, 0.95);
+      --border: rgba(249, 168, 201, 0.3);
+      --text: #3D2B2B;
+      --muted: #9C7B7B;
+      --accent: #F9A8C9;
+      --accent-strong: #E75480;
+      --accent-soft: #FADADD;
+      --secondary: #C8A2C8;
+      --shadow: 0 4px 20px rgba(249, 168, 201, 0.25);
+      --radius: 28px;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    ::selection {
+      background: rgba(247, 136, 190, 0.25);
+      color: var(--text);
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+      border-radius: 999px;
+      border: 3px solid rgba(255, 245, 247, 0.8);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100%, calc(100% - 2rem));
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .top-banner {
+      width: 100%;
+      background: linear-gradient(90deg, rgba(249,168,201,0.12), rgba(248, 222, 238, 0.08));
+      color: var(--text);
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(249,168,201,0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    nav {
+      width: 100%;
+      position: sticky;
+      top: 3rem;
+      z-index: 25;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.4rem 0;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(249, 168, 201, 0.35);
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(249, 168, 201, 0.12);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--accent-strong);
+      letter-spacing: 0.04em;
+      font-size: 1.5rem;
+    }
+
+    .logo span {
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent-strong);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid rgba(249, 168, 201, 0.6);
+      background: rgba(255, 250, 249, 0.9);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 1.4rem;
+      height: 2px;
+      background: var(--accent-strong);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-toggle span::before {
+      top: -6px;
+    }
+
+    .menu-toggle span::after {
+      top: 6px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 0 3rem;
+      margin-top: 1rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(249, 168, 201, 0.2), transparent 28%),
+                  radial-gradient(circle at bottom right, rgba(200, 162, 200, 0.15), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,%3Csvg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M50 400C70 320 160 280 240 280C340 280 440 340 520 360C620 390 720 320 760 240" stroke="%23F9A8C9" stroke-opacity="0.12" stroke-width="8"/%3E%3Cpath d="M120 520C150 440 240 400 330 400C410 400 500 460 590 490C670 520 760 450 780 360" stroke="%23C8A2C8" stroke-opacity="0.10" stroke-width="7"/%3E%3C/svg%3E') no-repeat center;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .petal-wrap {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .petal {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255,255,255,0.9) 30%, rgba(249, 168, 201, 0.95) 100%);
+      border-radius: 50% 40% 50% 50%;
+      opacity: 0.8;
+      transform: rotate(45deg);
+      filter: drop-shadow(0 8px 14px rgba(231, 84, 128, 0.18));
+      animation: drift 14s infinite ease-in;
+    }
+
+    .petal:nth-child(1) { width: 12px; height: 18px; left: 8%; top: -6%; animation-delay: 0s; animation-duration: 16s; }
+    .petal:nth-child(2) { width: 15px; height: 22px; left: 25%; top: -8%; animation-delay: 2s; animation-duration: 15s; }
+    .petal:nth-child(3) { width: 10px; height: 18px; left: 55%; top: -10%; animation-delay: 1s; animation-duration: 14s; }
+    .petal:nth-child(4) { width: 13px; height: 20px; left: 72%; top: -7%; animation-delay: 4s; animation-duration: 17s; }
+    .petal:nth-child(5) { width: 16px; height: 24px; left: 30%; top: -5%; animation-delay: 6s; animation-duration: 18s; }
+    .petal:nth-child(6) { width: 11px; height: 19px; left: 82%; top: -9%; animation-delay: 8s; animation-duration: 16s; }
+    .petal:nth-child(7) { width: 18px; height: 26px; left: 12%; top: -12%; animation-delay: 3s; animation-duration: 13s; }
+    .petal:nth-child(8) { width: 14px; height: 22px; left: 44%; top: -6%; animation-delay: 5s; animation-duration: 16s; }
+    .petal:nth-child(9) { width: 8px; height: 16px; left: 62%; top: -14%; animation-delay: 7s; animation-duration: 15s; }
+    .petal:nth-child(10) { width: 15px; height: 22px; left: 88%; top: -11%; animation-delay: 9s; animation-duration: 17s; }
+    .petal:nth-child(11) { width: 20px; height: 28px; left: 18%; top: -10%; animation-delay: 10s; animation-duration: 14s; }
+    .petal:nth-child(12) { width: 12px; height: 20px; left: 66%; top: -8%; animation-delay: 11s; animation-duration: 19s; }
+
+    @keyframes drift {
+      0% { transform: translateY(0) rotate(15deg); opacity: 0.9; }
+      50% { opacity: 0.6; }
+      100% { transform: translateY(120vh) rotate(45deg); opacity: 0.05; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+      min-height: 68vh;
+      padding: 1rem 0;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--accent-strong);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+    }
+
+    .hero p.lead {
+      max-width: 640px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn,
+    .chip a,
+    .product-card button,
+    .whatsapp-card a {
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      padding: 1rem 1.7rem;
+      border-radius: 999px;
+      background: var(--accent-strong);
+      color: #fff;
+      box-shadow: 0 18px 30px rgba(231, 84, 128, 0.24);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-weight: 600;
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--accent-strong);
+      border: 1px solid rgba(232, 84, 128, 0.18);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 35px rgba(231, 84, 128, 0.3);
+    }
+
+    .btn:hover::after {
+      content: '';
+    }
+
+    .btn:hover {
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: translateY(-3px) scale(1); }
+      to { transform: translateY(-6px) scale(1.02); }
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(249, 168, 201, 0.24);
+      border-radius: 28px;
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow);
+      color: var(--text);
+    }
+
+    .trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      color: var(--text);
+    }
+
+    .section-head p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .chip-row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(180px, 1fr);
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .chip-row::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .chip-row::-webkit-scrollbar-thumb {
+      background: rgba(231, 84, 128, 0.4);
+      border-radius: 999px;
+    }
+
+    .chip {
+      scroll-snap-align: start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(255, 250, 249, 0.9);
+      border: 1px solid rgba(249, 168, 201, 0.28);
+      box-shadow: var(--shadow);
+      min-width: 180px;
+    }
+
+    .chip-icon {
+      width: 2.6rem;
+      height: 2.6rem;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(249,168,201,0.18), rgba(248, 218, 221, 0.7));
+      font-size: 1.2rem;
+    }
+
+    .chip a {
+      font-weight: 600;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 1.75rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-card,
+    .feature-card,
+    .testimonial-card,
+    .contact-card {
+      background: var(--surface);
+      border-radius: 32px;
+      border: 1px solid rgba(249, 168, 201, 0.22);
+      box-shadow: var(--shadow);
+      padding: 1.6rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card:hover,
+    .feature-card:hover,
+    .testimonial-card:hover,
+    .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 32px rgba(249, 168, 201, 0.3);
+    }
+
+    .product-media {
+      min-height: 220px;
+      border-radius: 32px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      font-size: 3rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+      text-shadow: 0 6px 14px rgba(61,43,43,0.15);
+    }
+
+    .product-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.65rem;
+      color: var(--text);
+    }
+
+    .product-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 1rem;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .price {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #503450;
+      background: rgba(233, 102, 156, 0.14);
+      border: 1px solid rgba(233, 102, 156, 0.18);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .buy-now {
+      width: 100%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.95rem 1rem;
+      border-radius: 20px;
+      background: var(--accent-strong);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .feature-card {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .feature-icon {
+      width: 3.2rem;
+      height: 3.2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(249,168,201,0.16), rgba(248, 218, 221, 0.8));
+      font-size: 1.4rem;
+    }
+
+    .feature-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .testimonial-card {
+      background: rgba(250, 218, 221, 0.75);
+    }
+
+    .testimonial-card p {
+      font-size: 0.98rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .testimonial-author {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      color: var(--accent-strong);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .banner-cta {
+      padding: 3rem 0;
+      background: linear-gradient(135deg, rgba(249,168,201,0.35), rgba(242, 223, 230, 0.95));
+      border-radius: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .banner-inner {
+      display: grid;
+      gap: 1.2rem;
+      align-items: center;
+      grid-template-columns: minmax(0, 1.1fr) minmax(auto, 320px);
+    }
+
+    .banner-copy h2,
+    .contact-copy h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .banner-copy p,
+    .contact-copy p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 620px;
+    }
+
+    .whatsapp-card {
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(249,168,201,0.35);
+      border-radius: 30px;
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .whatsapp-card a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 999px;
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 14px 28px rgba(37, 211, 102, 0.24);
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.02em;
+    }
+
+    .details-list {
+      display: grid;
+      gap: 0.75rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .details-list span {
+      display: inline-flex;
+      gap: 0.75rem;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .contact-section {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1.2fr 0.9fr;
+    }
+
+    .contact-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-copy p {
+      max-width: 620px;
+    }
+
+    footer {
+      background: rgba(249, 168, 201, 0.12);
+      padding: 2.5rem 0 1.5rem;
+      border-top: 1px solid rgba(249, 168, 201, 0.2);
+    }
+
+    .footer-inner {
+      display: grid;
+      gap: 1.5rem;
+      align-items: center;
+      grid-template-columns: 1fr auto;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .fade-item {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero, section {
+      position: relative;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .banner-inner { grid-template-columns: 1fr; }
+      .contact-section { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding-top: 3rem; }
+      nav { top: 3.5rem; }
+      .nav-inner { flex-wrap: wrap; }
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .nav-inner.open .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        padding-top: 1rem;
+      }
+      .hero-content { padding-top: 2rem; }
+      .grid-3, .feature-grid, .testimonial-grid { grid-template-columns: 1fr; }
+      .section-head { text-align: center; }
+      .trust-row { grid-template-columns: 1fr; }
+      .banner-inner, .contact-section { gap: 1.5rem; }
+      .product-card { padding: 1.4rem; }
+    }
+
+    .gradient-1 { background: radial-gradient(circle at top left, #ffd6e8, #f9a8c9 55%, #f7d9e5); }
+    .gradient-2 { background: radial-gradient(circle at top right, #fde2eb, #f5a8da 55%, #f8d9e0); }
+    .gradient-3 { background: radial-gradient(circle at bottom left, #f7e8f2, #d4b3ce 60%, #f8dae4); }
+    .gradient-4 { background: radial-gradient(circle at bottom right, #ffe8f2, #f2a5c3 55%, #fce8f3); }
+    .gradient-5 { background: radial-gradient(circle at top left, #fff1d6, #f7c7a5 55%, #fbe9d1); }
+    .gradient-6 { background: radial-gradient(circle at top right, #e8d7f6, #c8a2c8 55%, #f7e7f4); }
+    .gradient-7 { background: radial-gradient(circle at bottom left, #f6e8ff, #c7a4de 60%, #f8e9fb); }
+    .gradient-8 { background: radial-gradient(circle at bottom right, #fff0f4, #f6bcd7 58%, #fde4ef); }
+    .gradient-9 { background: radial-gradient(circle at top left, #ffe6e9, #f39eb2 58%, #fce4e8); }
+    .gradient-10 { background: radial-gradient(circle at top right, #fff7ed, #ffd2c5 55%, #fde7db); }
+    .gradient-11 { background: radial-gradient(circle at bottom left, #f2f0ff, #c9b1ff 55%, #f7efff); }
+    .gradient-12 { background: radial-gradient(circle at bottom right, #ffe9f6, #f5afd8 56%, #fde8f3); }
+  </style>
+</head>
+<body>
+  <div class="top-banner">🚚 Free delivery in Bangalore for orders above ₹599 | Order on WhatsApp: <a href="https://wa.me/918977605730" target="_blank" rel="noreferrer">8977605730</a></div>
+  <header class="container">
+    <nav class="nav-inner">
+      <a class="logo" href="#home"><span>🌹</span>Flovey</a>
+      <button class="menu-toggle" aria-label="Toggle navigation"><span></span></button>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#occasions">Occasions</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="petal-wrap" aria-hidden="true">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+      </div>
+      <div class="container hero-content fade-item">
+        <div class="hero-copy">
+          <div class="eyebrow">Bangalore's boutique flower delivery</div>
+          <h1>Fresh Blooms,<br />Delivered With Love</h1>
+          <p class="lead">Handcrafted bouquets and fresh flower arrangements delivered across Bangalore. Perfect for every occasion.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#shop">Shop Now 🌸</a>
+            <a class="btn secondary" href="https://wa.me/918977605730?text=Hi! I would like to order flowers from Flovey 🌸" target="_blank" rel="noreferrer">Order on WhatsApp 💬</a>
+          </div>
+        </div>
+        <div class="trust-row">
+          <div class="trust-item">🌿 Fresh Flowers</div>
+          <div class="trust-item">🚚 Same Day Delivery</div>
+          <div class="trust-item">💐 100+ Arrangements</div>
+          <div class="trust-item">⭐ 500+ Happy Customers</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container fade-item" id="occasions">
+      <div class="section-head">
+        <h2>Shop By Occasion</h2>
+        <p>Choose a mood, pick a bouquet, and send a thoughtful surprise with just one message.</p>
+      </div>
+      <div class="chip-row">
+        <div class="chip"><div class="chip-icon">💕</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Anniversary 💕" target="_blank" rel="noreferrer">Anniversary</a></div>
+        <div class="chip"><div class="chip-icon">🎂</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Birthday 🎂" target="_blank" rel="noreferrer">Birthday</a></div>
+        <div class="chip"><div class="chip-icon">💐</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Just Because 💐" target="_blank" rel="noreferrer">Just Because</a></div>
+        <div class="chip"><div class="chip-icon">💍</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Proposal 💍" target="_blank" rel="noreferrer">Proposal</a></div>
+        <div class="chip"><div class="chip-icon">👩</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Mother's Day 👩" target="_blank" rel="noreferrer">Mother's Day</a></div>
+        <div class="chip"><div class="chip-icon">🎓</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Graduation 🎓" target="_blank" rel="noreferrer">Graduation</a></div>
+        <div class="chip"><div class="chip-icon">💔</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Apology 💔" target="_blank" rel="noreferrer">Apology</a></div>
+        <div class="chip"><div class="chip-icon">🏠</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Housewarming 🏠" target="_blank" rel="noreferrer">Housewarming</a></div>
+        <div class="chip"><div class="chip-icon">💼</div><a href="https://wa.me/918977605730?text=Hi! I want to order flowers for Corporate 💼" target="_blank" rel="noreferrer">Corporate</a></div>
+      </div>
+    </section>
+
+    <section class="container fade-item" id="shop">
+      <div class="section-head">
+        <h2>Our Blooms</h2>
+        <p>Handpicked arrangements made with love in Bangalore.</p>
+      </div>
+      <div class="grid-3">
+        <article class="product-card">
+          <div class="product-media gradient-1">🌹</div>
+          <h3>Red Rose Bouquet (12 Stems)</h3>
+          <p>Classic red roses, perfect for romance and anniversaries.</p>
+          <div class="price-row"><span class="price">₹649</span><span class="badge">Best Seller</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Red Rose Bouquet (12 Stems)* - ₹649 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-2">🌸</div>
+          <h3>Pink Rose Hand Bouquet (20 Stems)</h3>
+          <p>Soft pink roses wrapped in premium satin ribbon.</p>
+          <div class="price-row"><span class="price">₹899</span><span class="badge">Most Loved</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Pink Rose Hand Bouquet (20 Stems)* - ₹899 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-3">🌹</div>
+          <h3>White Rose Elegance (15 Stems)</h3>
+          <p>Pure white roses symbolizing new beginnings.</p>
+          <div class="price-row"><span class="price">₹749</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *White Rose Elegance (15 Stems)* - ₹749 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-4">💐</div>
+          <h3>Mixed Rose Bouquet (25 Stems)</h3>
+          <p>A colourful mix of red, pink, yellow and white roses.</p>
+          <div class="price-row"><span class="price">₹1,099</span><span class="badge">New Arrival</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Mixed Rose Bouquet (25 Stems)* - ₹1,099 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-5">🌻</div>
+          <h3>Sunflower Sunshine (6 Stems)</h3>
+          <p>Bright yellow sunflowers to spread happiness.</p>
+          <div class="price-row"><span class="price">₹549</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Sunflower Sunshine (6 Stems)* - ₹549 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-6">🌸</div>
+          <h3>Pastel Dream Bouquet</h3>
+          <p>A dreamy mix of pastel carnations, lilies and roses.</p>
+          <div class="price-row"><span class="price">₹1,199</span><span class="badge">Most Loved</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Pastel Dream Bouquet* - ₹1,199 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-7">💜</div>
+          <h3>Purple Lavender Bundle</h3>
+          <p>Fresh lavender and purple statice — calming and beautiful.</p>
+          <div class="price-row"><span class="price">₹699</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Purple Lavender Bundle* - ₹699 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-8">🌸</div>
+          <h3>Lily & Rose Combo</h3>
+          <p>Elegant oriental lilies paired with premium roses.</p>
+          <div class="price-row"><span class="price">₹949</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Lily & Rose Combo* - ₹949 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-9">🌹</div>
+          <h3>Luxury Red Rose Box (24 Stems)</h3>
+          <p>24 premium red roses in a luxury gift box.</p>
+          <div class="price-row"><span class="price">₹1,599</span><span class="badge">Best Seller</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Luxury Red Rose Box (24 Stems)* - ₹1,599 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-10">🌈</div>
+          <h3>Rainbow Bouquet</h3>
+          <p>7 colour roses representing 7 emotions — truly unique.</p>
+          <div class="price-row"><span class="price">₹1,299</span><span class="badge">New Arrival</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Rainbow Bouquet* - ₹1,299 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-11">🌺</div>
+          <h3>Orchid Elegance</h3>
+          <p>Exotic purple and white orchids in a premium vase arrangement.</p>
+          <div class="price-row"><span class="price">₹1,499</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Orchid Elegance* - ₹1,499 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+        <article class="product-card">
+          <div class="product-media gradient-12">🎉</div>
+          <h3>Grand Celebration Bouquet (50 Stems)</h3>
+          <p>A stunning 50-stem mixed bouquet for grand occasions.</p>
+          <div class="price-row"><span class="price">₹2,499</span></div>
+          <a class="buy-now" href="https://wa.me/918977605730?text=Hi! I want to order *Grand Celebration Bouquet (50 Stems)* - ₹2,499 from Flovey 🌸 Please confirm availability." target="_blank" rel="noreferrer">🛒 Buy Now</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="container fade-item">
+      <div class="section-head">
+        <h2>Why Bangalore Loves Flovey 💕</h2>
+      </div>
+      <div class="grid-3 feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">🌿</div>
+          <h3>Farm Fresh</h3>
+          <p>Flowers sourced fresh every morning directly from local farms.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Same Day Delivery</h3>
+          <p>Order before 6 PM and get delivery the same day across Bangalore.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🎀</div>
+          <h3>Beautiful Packaging</h3>
+          <p>Every bouquet is hand-wrapped with premium ribbon and care card.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Easy WhatsApp Ordering</h3>
+          <p>No app needed — just WhatsApp us and we handle the rest.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container fade-item">
+      <div class="section-head">
+        <h2>Love Notes From Our Customers 💌</h2>
+      </div>
+      <div class="grid-3 testimonial-grid">
+        <article class="testimonial-card">
+          <p>"Ordered a surprise bouquet for my wife's anniversary — it arrived fresh and beautifully wrapped. She loved it!"</p>
+          <div class="testimonial-author">Rahul M., Koramangala<span>⭐⭐⭐⭐⭐</span></div>
+        </article>
+        <article class="testimonial-card">
+          <p>"The pastel dream bouquet was absolutely gorgeous! Perfect for my best friend's birthday. Will order again!"</p>
+          <div class="testimonial-author">Priya S., Indiranagar<span>⭐⭐⭐⭐⭐</span></div>
+        </article>
+        <article class="testimonial-card">
+          <p>"Super easy to order on WhatsApp and delivery was on time. Freshest flowers I've seen in Bangalore!"</p>
+          <div class="testimonial-author">Sneha R., Whitefield<span>⭐⭐⭐⭐⭐</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container fade-item banner-cta">
+      <div class="banner-inner">
+        <div class="banner-copy">
+          <h2>Ready to Order? It's Just One Message Away! 💬</h2>
+          <p>Chat with us on WhatsApp — tell us the occasion, budget and delivery address. We'll handle the rest!</p>
+        </div>
+        <div class="whatsapp-card">
+          <a href="https://wa.me/918977605730?text=Hi%20Flovey!%20I%20want%20to%20order%20flowers%20%F0%9F%8C%B8" target="_blank" rel="noreferrer">💬 Order on WhatsApp Now</a>
+          <div class="details-list">
+            <span>📍 Delivering across Bangalore</span>
+            <span>⏰ 9 AM – 9 PM Daily</span>
+            <span>📞 8977605730</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container fade-item" id="about">
+      <div class="section-head">
+        <h2>About Flovey</h2>
+      </div>
+      <div class="contact-section">
+        <div class="contact-copy">
+          <p>Flovey is Bangalore's most loved flower delivery service. We believe every emotion deserves a beautiful bloom. From birthdays to proposals, we're here to make your moments unforgettable.</p>
+          <p>Our bouquets and arrangements are created with care, made to delight every recipient and bring joy across the city.</p>
+        </div>
+        <div class="contact-card">
+          <h3>Contact Details</h3>
+          <div class="details-list">
+            <span>📍 Bangalore, Karnataka</span>
+            <span>📞 8977605730</span>
+            <span>💬 WhatsApp: 8977605730</span>
+            <span>🌐 flovey.in</span>
+            <span>⏰ Open: 9 AM – 9 PM, 7 days a week</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container fade-item" id="contact">
+    <div class="footer-inner">
+      <div>
+        <div class="logo"><span>🌹</span>Flovey</div>
+        <p class="footer-copy">Fresh blooms, delivered with love 🌸</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#occasions">Occasions</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <p class="footer-copy" style="margin-top:1rem;">© 2025 Flovey. Made with 💕 in Bangalore</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navInner = document.querySelector('.nav-inner');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    menuToggle.addEventListener('click', () => {
+      navInner.classList.toggle('open');
+    });
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => navInner.classList.remove('open'));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-item').forEach(item => observer.observe(item));
+  </script>
+</body>
+</html>
